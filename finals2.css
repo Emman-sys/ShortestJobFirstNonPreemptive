@@ -11,10 +11,20 @@ body {
     padding: 20px;
     color: #333;
 }
+.container2{
+    position: absolute;
+    left: 100px;
+    width:1689px; 
+    height: 800px;
+    border-radius: 15px;
+    background: white; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+}
 
 .container {
     position: absolute;
-    width: 1400px;
+    width: 1450px;
     bottom: -500px;
     margin: 0 auto;
     background: white;
