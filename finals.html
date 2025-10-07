@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SJF Non-Preemptive Scheduler</title>
+    <link rel="stylesheet" href="finals2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Shortest Job First (Non-Preemptive)</h1>
+        
+        <div class="input-section">
+            <h2>Add Process</h2>
+            <div class="input-group">
+                <label for="processName">Process Name:</label>
+                <input type="text" id="processName" placeholder="P1" />
+            </div>
+            
+            <div class="input-group">
+                <label for="arrivalTime">Arrival Time:</label>
+                <input type="number" id="arrivalTime" min="0" placeholder="0" />
+            </div>
+            
+            <div class="input-group">
+                <label for="burstTime">Burst Time:</label>
+                <input type="number" id="burstTime" min="1" placeholder="5" />
+            </div>
+            
+            <button id="addProcessBtn">Add Process</button>
+            <button id="clearAllBtn">Clear All</button>
+        </div>
+
+        <div class="process-list-section">
+            <h2>Process Queue</h2>
+            <div id="processList"></div>
+        </div>
+
+        <div class="control-section">
+            <button id="calculateBtn">Calculate Schedule</button>
+        </div>
+
+        <div id="resultsSection" style="display: none;">
+            <div class="gantt-section">
+                <h2>Gantt Chart</h2>
+                <div id="ganttChart"></div>
+            </div>
+
+            <div class="table-section">
+                <h2>Process Details</h2>
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Process</th>
+                            <th>Arrival Time</th>
+                            <th>Burst Time</th>
+                            <th>Completion Time</th>
+                            <th>Turnaround Time</th>
+                            <th>Waiting Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="averages-section">
+                <h2>Average Times</h2>
+                <div class="averages">
+                    <div class="avg-item">
+                        <span class="label">Average Turnaround Time:</span>
+                        <span id="avgTurnaround" class="value">0</span>
+                    </div>
+                    <div class="avg-item">
+                        <span class="label">Average Waiting Time:</span>
+                        <span id="avgWaiting" class="value">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="finals3.js"></script>
+</body>
+</html>
