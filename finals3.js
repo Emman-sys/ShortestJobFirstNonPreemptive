@@ -129,8 +129,18 @@ function calculateSchedule() {
         const availableProcesses = remainingProcesses.filter(p => p.arrivalTime <= currentTime);
 
         if (availableProcesses.length === 0) {
-            // No process available, jump to next arrival time
-            currentTime = remainingProcesses[0].arrivalTime;
+            const nextArrival = remainingProcesses[0].arrivalTime;
+            if (currentTime < nextArrival) {
+                ganttSchedule.push({
+                    name: 'Idle',
+                    burstTime: nextArrival - currentTime,
+                    startTime: currentTime,
+                    completionTime: nextArrival,
+                    color: '#bdc3c7',
+                    isIdle: true
+                });
+            }
+            currentTime = nextArrival;
             continue;
         }
 
@@ -151,7 +161,8 @@ function calculateSchedule() {
         ganttSchedule.push({
             ...selectedProcess,
             startTime: startTime,
-            completionTime: completionTime
+            completionTime: completionTime,
+            isIdle: false
         });
 
         // Add to completed processes
@@ -185,12 +196,12 @@ function renderResults(completedProcesses, ganttSchedule) {
         <div class="gantt-block" style="
             background: ${process.color};
             width: ${process.burstTime * 50}px;
+            color: ${process.isIdle ? '#333' : '#fff'};
         ">
-            <div class="process-name">${process.name}</div>
-            <div class="burst-time">BT: ${process.burstTime}</div>
+            <div class="process-name">${process.isIdle ? 'Idle' : process.name}</div>
+            <div class="burst-time">${process.isIdle ? 'Δt: ' + process.burstTime : 'BT: ' + process.burstTime}</div>
             <div class="gantt-time start">${process.startTime}</div>
-            ${index === ganttSchedule.length - 1 ? 
-                `<div class="gantt-time end">${process.completionTime}</div>` : ''}
+            ${index === ganttSchedule.length - 1 ? `<div class="gantt-time end">${process.completionTime}</div>` : ''}
         </div>
     `).join('');
 
