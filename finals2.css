@@ -11,22 +11,42 @@ body {
     padding: 20px;
     color: #333;
 }
-.container2{
+.sjf{
     position: absolute;
-    left: 100px;
-    width:1689px; 
-    height: 800px;
+    left: 15px;
+    top: 25px;
+    text-align: left;
+    color: black;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10px;
+}
+.title{
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.container2{
+    width:1450px;
+    height: 200px;
+    background-color: white;
     border-radius: 15px;
-    background: white; 
+    padding: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     margin: 0 auto;
+
+
+
 }
 
 .container {
     position: absolute;
     width: 1450px;
-    bottom: -500px;
     margin: 0 auto;
+    bottom: -500px;
     background: white;
     border-radius: 15px;
     padding: 30px;
