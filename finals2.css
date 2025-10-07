@@ -11,17 +11,7 @@ body {
     padding: 20px;
     color: #333;
 }
-.sjf{
-    position: absolute;
-    left: 15px;
-    top: 25px;
-    text-align: left;
-    color: black;
-    margin-bottom: 10px;
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 10px;
-}
+
 .title{
     text-align: center;
     color: white;
@@ -29,7 +19,38 @@ body {
     font-size: 2.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
+.sjf{
+    position: absolute;
+    left: 15px;
+    text-align: left;
+    color: rgb(133, 65, 200);
+    margin-bottom: 10px;
+    font-size: 20px;
+    border-bottom: none !important;
+}
+.definition{
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    text-align: left;
+    color: rgb(156, 63, 172);
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-bottom: none !important;
+  
+}
+.aboutmr{
+     position: absolute;
+    top: 90px;
+    left: 15px;
+    text-align: left;
+    color: rgb(161, 36, 192);
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-bottom: none !important;
+}
 .container2{
+    position: relative;
     width:1450px;
     height: 200px;
     background-color: white;
@@ -43,10 +64,10 @@ body {
 }
 
 .container {
-    position: absolute;
-    width: 1450px;
+    position: relative;
+    width: 1455px;
     margin: 0 auto;
-    bottom: -500px;
+    top: 10px;
     background: white;
     border-radius: 15px;
     padding: 30px;
