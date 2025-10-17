@@ -49,6 +49,16 @@ body {
     font-size: 15px;
     border-bottom: none !important;
 }
+.mr{
+     position: absolute;
+    top: 90px;
+    left: 15px;
+    text-align: left;
+    color: rgb(161, 36, 192);
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-bottom: none !important;
+}
 .container2{
     position: relative;
     width:1450px;
@@ -58,9 +68,6 @@ body {
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     margin: 0 auto;
-
-
-
 }
 
 .container {
