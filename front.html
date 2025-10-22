@@ -22,8 +22,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-y: auto;
+            overflow-x: hidden;
             position: relative;
+            padding: 40px 20px;
         }
 
         /* Scrollbar Styling */
@@ -95,7 +97,7 @@
         }
 
         .container {
-            position: absolute;
+            position: relative;
             z-index: 10;
             text-align: center;
             padding: 80px 50px;
@@ -103,11 +105,12 @@
             border-radius: 40px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25),
                         0 0 150px rgba(102, 126, 234, 0.3);
+            max-width: 700px;
             width: 90%;
-            height: 120%;
             backdrop-filter: blur(20px);
             border: 3px solid rgba(240, 147, 251, 0.2);
             animation: slideUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin: auto;
         }
 
         @keyframes slideUp {
