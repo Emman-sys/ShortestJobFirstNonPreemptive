@@ -112,8 +112,8 @@
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 0 100px rgba(0, 128, 255, 0.2);
-            max-width: 1000px;
-            width: 120%;
+            max-width: 1400px;
+            width: 90%;
             min-height: 80vh;
             margin: 40px auto;
             display: flex;
@@ -145,12 +145,31 @@
             gap: 2rem;
         }
 
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            margin: 40px 0;
+        }
+
         .icon {
             width: 250px;
             height: auto;
-            margin: 40px 0;
             animation: float 6s ease-in-out infinite;
             filter: drop-shadow(0 0 30px rgba(0, 128, 255, 0.5));
+        }
+
+        /* Add different animation delays for each icon */
+        .icons-container .icon:nth-child(1) {
+            animation-delay: -2s;
+        }
+        .icons-container .icon:nth-child(2) {
+            animation-delay: 0s;
+        }
+        .icons-container .icon:nth-child(3) {
+            animation-delay: -4s;
         }
 
         @keyframes float {
@@ -275,9 +294,14 @@
             }
             50% {
                 opacity: 0.6;
-                transform: scale(1.2);
+            .icons-container {
+                flex-direction: column;
+                gap: 20px;
             }
-        }
+            
+            .icon {
+                width: 90px;
+            }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -327,25 +351,17 @@
     <div class="container">
         <div class="header">
             <h1 style="font-size: 5rem; color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4), 0 0 60px rgba(255, 255, 255, 0.2);">SJF Scheduler</h1>
-            <img src="computeros.png" alt="Scheduler Icon" class="icon">
+            <div class="icons-container">
+                <img src="mail.png" alt="Mail Icon" class="icon">
+                <img src="computeros.png" alt="Computer Icon" class="icon">
+                <img src="pens.png" alt="Pen Icon" class="icon">
+            </div>
             <p class="subtitle">Master Process Scheduling</p>
         </div>
 
         <div class="description">
             Experience the power of the Shortest Job First (SJF) non-preemptive scheduling algorithm through our 
             interactive simulator. Optimize your understanding of process management and CPU scheduling.
-        </div>
-
-        <div class="features">
-            <div class="feature">
-                <span>🔍 Visualize</span>
-            </div>
-            <div class="feature">
-                <span>⚡ Optimize</span>
-            </div>
-            <div class="feature">
-                <span>📊 Analyze</span>
-            </div>
         </div>
 
         <button class="start-btn" onclick="goToScheduler()">
