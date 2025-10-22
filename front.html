@@ -6,7 +6,7 @@
     <title>SJF Non-Preemptive Scheduler</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -23,13 +23,13 @@
         }
 
         body {
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(45deg, 
-                #000428 0%, 
-                #004e92 25%,
-                #2c3e50 50%,
-                #3498db 75%,
-                #2980b9 100%
+            font-family: 'Lora', serif;
+            background: linear-gradient(135deg, 
+                #ff5454 0%,
+                #22a9fd 25%,
+                #ff5bff 50%,
+                #60ff8a 75%,
+                #ff6161 100%
             );
             background-size: 400% 400%;
             min-height: 100vh;
@@ -77,19 +77,29 @@
         /* Floating Background Elements */
         .floating-element {
             position: fixed;
-            color: rgba(255, 255, 255, 0.2);
-            font-weight: bold;
+            font-weight: 900;
             pointer-events: none;
             z-index: 1;
-            font-family: 'Consolas', monospace;
-            animation: fall-animation var(--float-duration) linear infinite;
+            font-family: 'Lora', serif;
             opacity: 0;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+        }
+
+        .floating-element.falling {
+            animation: fall-animation var(--float-duration) linear;
+            top: -50px;
+        }
+
+        .floating-element.rising {
+            animation: rise-animation var(--float-duration) linear;
+            bottom: -50px;
         }
 
         @keyframes fall-animation {
             0% {
-                transform: translateY(-100px) translateX(var(--translate-x)) rotate(var(--rotation));
+                transform: translateY(0) translateX(var(--translate-x)) rotate(0);
                 opacity: 0;
             }
             10% {
@@ -99,32 +109,166 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(100vh) translateX(calc(var(--translate-x) * -1)) rotate(calc(var(--rotation) * -1));
+                transform: translateY(110vh) translateX(calc(var(--translate-x))) rotate(var(--rotation));
                 opacity: 0;
             }
         }
 
-        /* Glass morphism container */
-        .container {
+        @keyframes rise-animation {
+            0% {
+                transform: translateY(0) translateX(var(--translate-x)) rotate(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) translateX(calc(var(--translate-x))) rotate(var(--rotation));
+                opacity: 0;
+            }
+        }
+
+        /* Main Content Styles */
+        .main-content {
             position: relative;
             z-index: 10;
-            text-align: center;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 100px rgba(0, 128, 255, 0.2);
-            max-width: 1400px;
-            width: 90%;
-            min-height: 80vh;
-            margin: 40px auto;
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .main-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.4),
+                rgba(0, 0, 0, 0.2)
+            );
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 20px;
+            border: 2px solid rgba(16, 12, 12, 0.5);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 32px 0 rgba(182, 227, 255, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 10px 30px rgba(182, 227, 255, 0.4),
+                0 0 60px rgba(255, 209, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.7);
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.5),
+                rgba(255, 255, 255, 0.3)
+            );
+        }
+
+        .card:hover::before {
+            left: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+        }
+
+        .card-icon-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.8s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon-wrapper {
+            transform: scale(1.1);
+        }
+        
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.02)
+            );
+            transform: skewX(-15deg);
+            pointer-events: none;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 
+                    2px 2px 0px #ffffff,
+                    4px 4px 0px rgba(182, 227, 255, 0.8),
+                    6px 6px 0px rgba(255, 209, 255, 0.6),
+                    0 0 20px rgba(255, 87, 87, 0.5),
+                    0 0 40px rgba(54, 162, 235, 0.5),
+                    0 0 60px rgba(153, 102, 255, 0.5);
+            }
+            50% {
+                text-shadow: 
+                    2px 2px 0px #ffffff,
+                    4px 4px 0px rgba(182, 227, 255, 0.8),
+                    6px 6px 0px rgba(255, 209, 255, 0.6),
+                    0 0 30px rgba(255, 99, 132, 0.6),
+                    0 0 50px rgba(75, 192, 192, 0.6),
+                    0 0 70px rgba(255, 159, 64, 0.6);
+            }
         }
 
         @keyframes fadeIn {
@@ -138,6 +282,10 @@
             }
         }
 
+        h1 {
+            animation: glow 3s ease-in-out infinite;
+        }
+
         .header {
             margin: 0;
             display: flex;
@@ -149,31 +297,32 @@
             gap: 2rem;
         }
 
-        .icons-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            width: 100%;
-            margin: 40px 0;
-        }
-
         .icon {
-            width: 250px;
+            width: 100px;
             height: auto;
-            animation: float 6s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(0, 128, 255, 0.5));
+            filter: drop-shadow(0 0 20px rgba(0, 128, 255, 0.5));
+            transition: transform 0.3s ease;
         }
 
-        /* Add different animation delays for each icon */
-        .icons-container .icon:nth-child(1) {
-            animation-delay: -2s;
+        .card:hover .icon {
+            animation: float 3s ease-in-out infinite;
         }
-        .icons-container .icon:nth-child(2) {
-            animation-delay: 0s;
+
+        .card h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        .icons-container .icon:nth-child(3) {
-            animation-delay: -4s;
+
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+            font-family: 'Lora', serif;
+            font-weight: 400;
         }
 
         @keyframes float {
@@ -188,50 +337,110 @@
         }
 
         h1 {
-            font-size: 5rem;
-            color: #ffffff;
-            font-weight: 900;
+            font-family: 'Lora', serif;
+            font-size: 4.5rem;
+            color: #2d3748;
+            font-weight: 800;
             letter-spacing: 4px;
             text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
-                         0 0 40px rgba(255, 255, 255, 0.4),
-                         0 0 60px rgba(255, 255, 255, 0.2);
-            margin: 0;
+            text-shadow: 
+                2px 2px 0px #ffffff,
+                4px 4px 0px rgba(182, 227, 255, 0.8),
+                6px 6px 0px rgba(255, 209, 255, 0.6);
+            margin: 0 0 1rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1024px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+                padding: 0 10px;
+            }
+
+            .main-content {
+                padding: 20px 10px;
+                gap: 2rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .icon {
+                width: 80px;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .start-btn {
+                width: 100%;
+                padding: 16px 30px;
+            }
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            color: #4a9eff;
+            font-family: 'Lora', serif;
+            font-size: 1.6rem;
+            color: #3d4852;
             margin-bottom: 40px;
             font-weight: 600;
+            font-style: italic;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 10px rgba(74, 158, 255, 0.8);
+            letter-spacing: 3px;
+            text-shadow: 
+                1px 1px 0px #ffffff,
+                2px 2px 0px rgba(182, 227, 255, 0.8);
         }
 
         .description {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Lora', serif;
+            font-size: 1.3rem;
+            color: #2d3748;
             margin-bottom: 50px;
             line-height: 1.8;
             padding: 30px;
+            font-weight: 500;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
             background: rgba(74, 158, 255, 0.1);
             border-radius: 16px;
             border: 1px solid rgba(74, 158, 255, 0.2);
             text-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
         }
 
-        /* Removed feature styles as section was removed */
+        
 
         .start-btn {
+            font-family: 'Playfair Display', serif;
             font-size: 1.1rem;
             padding: 20px 60px;
             background: rgba(74, 158, 255, 0.2);
             color: white;
-            border: 1px solid rgba(74, 158, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 500;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             letter-spacing: 3px;
@@ -252,8 +461,10 @@
         }
 
         .footer-text {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.6);
             margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -323,30 +534,52 @@
     <div class="bg-gradient"></div>
 
     <!-- Main content -->
-    <div class="container">
-        <div class="header">
-            <h1 style="font-size: 5rem; color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4), 0 0 60px rgba(255, 255, 255, 0.2);">SJF Scheduler</h1>
-            <div class="icons-container">
-                <img src="mail.png" alt="Mail Icon" class="icon">
-                <img src="computeros.png" alt="Computer Icon" class="icon">
-                <img src="pens.png" alt="Pen Icon" class="icon">
-            </div>
+    <main class="main-content">
+        <header class="main-header">
+            <h1>Shortest Job First Scheduler</h1>
             <p class="subtitle">Master Process Scheduling</p>
+        </header>
+
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon-wrapper">
+                    <img src="mail.png" alt="Mail Icon" class="icon">
+                </div>
+                <h3>Communication</h3>
+              
+            </div>
+
+            <div class="card">
+                <div class="card-icon-wrapper">
+                    <img src="computeros.png" alt="Computer Icon" class="icon">
+                </div>
+                <h3>Processing</h3>
+               
+            </div>
+
+            <div class="card">
+                <div class="card-icon-wrapper">
+                    <img src="pens.png" alt="Pen Icon" class="icon">
+                </div>
+                <h3>Management</h3>
+                
+            </div>
         </div>
 
-        <div class="description">
-            Experience the power of the Shortest Job First (SJF) non-preemptive scheduling algorithm through our 
-            interactive simulator. Optimize your understanding of process management and CPU scheduling.
+        <div class="cta-section">
+            <p class="description">
+                Experience the power of the Shortest Job First (SJF) non-preemptive scheduling algorithm through our 
+                interactive simulator. Optimize your understanding of process management and CPU scheduling.
+            </p>
+            <button class="start-btn" onclick="goToScheduler()">
+                Launch Simulator <span style="margin-left: 8px;">→</span>
+            </button>
         </div>
 
-        <button class="start-btn" onclick="goToScheduler()">
-            Launch Simulator <span style="margin-left: 8px;">→</span>
-        </button>
-
-        <div class="footer-text">
+        <footer class="footer-text">
             Dive into the world of process scheduling algorithms
-        </div>
-    </div>
+        </footer>
+    </main>
 
     <script>
         function goToScheduler() {
@@ -356,40 +589,54 @@
         // Create floating elements
         function createFloatingElement() {
             const element = document.createElement('div');
-            element.className = 'floating-element';
             
-            // Random content (numbers, letters, and special characters)
+            // Randomly choose if the element will fall or rise (50% chance each)
+            const isRising = Math.random() < 0.5;
+            element.className = isRising ? 'floating-element rising' : 'floating-element falling';
+            
+            // Binary numbers and computer-related content with varied lengths
             const contents = [
-                '01', '10', 'CPU', 'SJF', '→', '∑', 'π', '∞', 
-                'P1', 'P2', 'P3', '&&', '||', '{}', '[]', '()', 
-                '++', '--', '+=', '*=', '=>', '#!/'
+                '0101', '1010', '1111', 
+                'P1', 'P2', 'P3',
+                'CPU', 'SJF',
+                '⚡', '◆', '●',
+                '01', '10', '11'
+            ];
+            
+            // Vibrant colors with higher opacity
+            const elementColors = [
+                '#FF0066',    // Bright Pink
+                '#0066FF',    // Bright Blue
+                '#FF6600',    // Bright Orange
+                '#00CC66',    // Bright Green
+                '#9933FF',    // Bright Purple
+                '#FF3399',    // Hot Pink
+                '#33CC33',    // Fresh Green
+                '#FFCC00'     // Golden Yellow
             ];
             element.textContent = contents[Math.floor(Math.random() * contents.length)];
             
             // Random position
             element.style.left = Math.random() * 100 + 'vw';
             
-            // Random colors with higher saturation
+            // Cool blue-white color scheme
             const colors = [
-                'rgba(255, 0, 0, 0.4)',      // Red
-                'rgba(255, 165, 0, 0.4)',    // Orange
-                'rgba(255, 255, 0, 0.4)',    // Yellow
-                'rgba(0, 255, 0, 0.4)',      // Green
-                'rgba(0, 255, 255, 0.4)',    // Cyan
-                'rgba(0, 0, 255, 0.4)',      // Blue
-                'rgba(255, 0, 255, 0.4)',    // Magenta
-                'rgba(255, 255, 255, 0.4)'   // White
+                'rgba(74, 158, 255, 0.6)',    // Bright blue
+                'rgba(135, 206, 250, 0.6)',   // Light sky blue
+                'rgba(173, 216, 230, 0.6)',   // Light blue
+                'rgba(255, 255, 255, 0.6)'    // White
             ];
             element.style.color = colors[Math.floor(Math.random() * colors.length)];
             
             // Random size
-            const sizes = ['1.5rem', '2rem', '2.5rem', '3rem', '3.5rem'];
+            const sizes = ['1.2rem', '1.5rem', '1.8rem', '2rem'];
             element.style.fontSize = sizes[Math.floor(Math.random() * sizes.length)];
             
-            // Random animation duration, rotation and horizontal movement
-            element.style.setProperty('--float-duration', (Math.random() * 8 + 5) + 's');
-            element.style.setProperty('--rotation', (Math.random() * 720 - 360) + 'deg');
-            element.style.setProperty('--translate-x', (Math.random() * 200 - 100) + 'px');
+            // Animation properties
+            const duration = Math.random() * 4 + 3; // 3-7 seconds
+            element.style.setProperty('--float-duration', duration + 's');
+            element.style.setProperty('--rotation', (Math.random() * 360 - 180) + 'deg');
+            element.style.setProperty('--translate-x', (Math.random() * 100 - 50) + 'px');
             
             document.body.appendChild(element);
             
@@ -403,8 +650,8 @@
         setInterval(createFloatingElement, 400);
 
         // Initial elements
-        for(let i = 0; i < 25; i++) {
-            setTimeout(createFloatingElement, Math.random() * 1000);
+        for(let i = 0; i < 20; i++) {
+            setTimeout(createFloatingElement, Math.random() * 1500);
         }
     </script>
 </body>
