@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Poppins', 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -11,6 +15,30 @@ body {
     padding: 40px 20px;
     color: #333;
     position: relative;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2, #f093fb);
+    background-clip: padding-box;
+    box-shadow: 0 0 15px rgba(240, 147, 251, 0.6);
 }
 
 /* Back Button */
