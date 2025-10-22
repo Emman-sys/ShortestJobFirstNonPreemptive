@@ -4,41 +4,81 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 20px;
     color: #333;
+}
+
+.title{
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.sjf{
+    position: absolute;
+    left: 15px;
+    text-align: left;
+    color: rgb(133, 65, 200);
+    margin-bottom: 10px;
+    font-size: 20px;
+    border-bottom: none !important;
+}
+.definition{
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    text-align: left;
+    color: rgb(156, 63, 172);
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-bottom: none !important;
+  
+}
+.aboutmr{
+     position: absolute;
+    top: 90px;
+    left: 15px;
+    text-align: left;
+    color: rgb(161, 36, 192);
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-bottom: none !important;
+}
+.mr{
+     position: absolute;
+    top: 85px;
+    left: 15px;
+    text-align: left;
+    color: rgb(161, 36, 192);
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-bottom: none !important;
+}
+.container2{
     position: relative;
+    width:1450px;
+    height: 200px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 14px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 10px;
-    border: 3px solid transparent;
-    background-clip: padding-box;
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #764ba2, #f093fb);
-    background-clip: padding-box;
-    box-shadow: 0 0 15px rgba(240, 147, 251, 0.6);
+.container {
+    position: relative;
+    width: 1455px;
+    margin: 0 auto;
+    top: 10px;
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Back Button */
@@ -184,37 +224,27 @@ body {
 
 h1 {
     text-align: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 35px;
-    font-size: 2.6rem;
+    color: #667eea;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    font-weight: 800;
-    letter-spacing: -1px;
 }
 
 h2 {
-    color: white;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    margin-bottom: 20px;
-    font-size: 1.6rem;
-    border-bottom: none !important;
-    padding: 18px 25px;
-    border-radius: 12px;
-    font-weight: 700;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    color: #764ba2;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
 }
 
 /* Input Section */
 .input-section {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
-    padding: 30px;
-    border-radius: 15px;
-    margin-bottom: 30px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
     border: 2px solid #667eea;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
 }
 
 .input-group {
